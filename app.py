@@ -198,9 +198,34 @@ st.plotly_chart(fig_top, use_container_width=True)
 # --- Dominant sector ---
 dom = df_sector_long[df_sector_long["Year"] == selected_year].groupby("norm_country")["Emissions"].idxmax().dropna()
 df_dom = df_sector_long.loc[dom, ["Country", "Sector", "Emissions"]]
-fig_dom = px.choropleth(df_dom, locations="Country", locationmode="country names",
-                        color="Sector", title=f"Dominant Emission Sector by Country ({selected_year})")
-fig_dom.update_layout(height=800)
+fig_dom = px.choropleth(
+    df_dom,
+    locations="Country",
+    locationmode="country names",
+    color="Sector",
+    title=f"Dominant Emission Sector by Country ({selected_year})"
+)
+
+fig_dom.update_layout(
+    geo=dict(showframe=False, showcoastlines=True,
+             projection_type="natural earth", projection_scale=1.3,
+             center=dict(lat=10, lon=0)),
+    height=800
+)
+
+# Highlight selected country
+if selected_country:
+    fig_dom.add_scattergeo(
+        locations=[selected_country],
+        locationmode="country names",
+        text=[selected_country],
+        mode="markers+text",
+        marker=dict(size=10, color=highlight_color, line=dict(width=2, color="black")),
+        textfont=dict(color="black", size=12, family="Arial Black"),
+        name=f"{selected_country} (selected)",
+        showlegend=False
+    )
+
 st.plotly_chart(fig_dom, use_container_width=True)
 
 # --- Temporal rank ---
@@ -221,15 +246,35 @@ st.plotly_chart(fig_bump, use_container_width=True)
 # --- LULUCF map ---
 country_sum = lulucf_long.groupby(["Country", "Year"])["Emissions"].sum().reset_index()
 df_latest_lu = country_sum[country_sum["Year"] == selected_year]
-fig_sink = px.choropleth(df_latest_lu, locations="Country", locationmode="country names",
-                         color="Emissions",
-                         color_continuous_scale=["darkgreen", "lightgreen", "yellow", "red"],
-                         title=f"LULUCF Carbon Sink / Source Map ({selected_year})<br>(Negative = Sink, Positive = Source)")
+fig_sink = px.choropleth(
+    df_latest_lu,
+    locations="Country",
+    locationmode="country names",
+    color="Emissions",
+    color_continuous_scale=["darkgreen", "lightgreen", "yellow", "red"],
+    title=f"LULUCF Carbon Sink / Source Map ({selected_year})<br>(Negative = Sink, Positive = Source)"
+)
+
 fig_sink.update_layout(
     geo=dict(showframe=False, showcoastlines=True,
              projection_type="natural earth", projection_scale=1.3,
              center=dict(lat=10, lon=0)),
-    height=800)
+    height=800
+)
+
+# Highlight selected country
+if selected_country:
+    fig_sink.add_scattergeo(
+        locations=[selected_country],
+        locationmode="country names",
+        text=[selected_country],
+        mode="markers+text",
+        marker=dict(size=10, color=highlight_color, line=dict(width=2, color="black")),
+        textfont=dict(color="black", size=12, family="Arial Black"),
+        name=f"{selected_country} (selected)",
+        showlegend=False
+    )
+
 st.plotly_chart(fig_sink, use_container_width=True)
 
 # -----------------------------
