@@ -65,78 +65,13 @@ European Commission, Joint Research Centre (JRC) and International Energy Agency
 **License & Use:**  
 © European Commission, Joint Research Centre (JRC).  
 Data provided under the conditions described in the “Citation and References” sheet of the EDGAR 2025 dataset.
-
-**Notes:**  
-- GHG emissions include CO₂ (fossil only), CH₄, N₂O, and F-gases.  
-- Aggregated using 100-year Global Warming Potentials (GWP-100) from IPCC AR5.  
-- Units are expressed in million tonnes of CO₂ equivalent per year (Mt CO₂-eq/yr).
-
 ---
 
-## 🛠️ Installation
-
-### 1. Clone the repository
-```bash
-git clone https://github.com/<your-username>/ghg-dashboard.git
-cd ghg-dashboard
-````
-
-### 2. Create a virtual environment
-
-```bash
-python -m venv venv
-source venv/bin/activate  # On macOS/Linux
-venv\Scripts\activate     # On Windows
-```
-
-### 3. Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### 4. Add the data
-
-Place the following files inside the `data/` directory:
-
-* `GHG_totals_by_country.xlsx`
-* `GHG_by_sector_and_country.xlsx`
-* `LULUCF_countries.xlsx`
-
-### 5. Run the dashboard
-
-```bash
-streamlit run app.py
-```
-
----
-
-## 🌐 Deployment
-
-You can easily deploy this dashboard on **Streamlit Cloud**:
-
-1. Push this repo to GitHub.
-2. Go to [https://streamlit.io/cloud](https://streamlit.io/cloud).
-3. Connect your GitHub account and select this repo.
-4. Set the Python version and install dependencies from `requirements.txt`.
-5. Your dashboard will be live at `https://<your-app-name>.streamlit.app`.
-
----
-
-## 📊 Example Visuals
-
-* **Global GHG Emissions Map (2024)**
-  ![Global GHG Emissions Map](docs/ghg_map_example.png)
-
-* **Sectoral Breakdown (Sunburst)**
-  ![Sectoral Breakdown](docs/sector_sunburst_example.png)
-
----
 
 ## 👩‍💻 Contributors
 
-Developed by **[Your Name]**
-Supervised by **[Advisor / Lab / University]**
+Developed by **Jinal Vyas**
+Supervised by **Arizona State University]**
 
 ---
 
