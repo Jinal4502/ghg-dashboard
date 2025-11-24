@@ -1,8 +1,3 @@
-Here’s a complete **README.md** you can include in your GitHub repo for your Streamlit dashboard 👇
-
----
-
-```markdown
 # 🌍 Global Greenhouse Gas (GHG) Impact Dashboard
 
 An interactive **Streamlit dashboard** for visualizing greenhouse gas (GHG) emissions across countries and sectors using the **EDGAR / JRC–IEA 2025 dataset**.  
@@ -160,7 +155,3 @@ If you use this dashboard or adapt it for research/publication, please cite:
 > Crippa M. *et al.*, *GHG emissions of all world countries – JRC/IEA 2025 Report*,
 > European Commission, Joint Research Centre (JRC), 2025.
 > DOI: [10.2760/9816914](https://data.europa.eu/doi/10.2760/9816914)
-
----
-
-```
