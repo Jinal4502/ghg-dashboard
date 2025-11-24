@@ -103,7 +103,6 @@ selected_year = st.sidebar.slider(
     2024
 )
 
-
 # -----------------------------
 # COUNTRY-WISE VISUALS
 # -----------------------------
@@ -168,6 +167,7 @@ fig_bar = px.bar(
 )
 st.plotly_chart(fig_bar, use_container_width=True)
 
+
 # -----------------------------
 # 🌐 CROSS-COUNTRY COMPARISONS
 # -----------------------------
@@ -178,18 +178,13 @@ highlight_color = "#00FFAA"  # bright teal for emphasis
 # --- Choropleth: Global GHG Emissions ---
 df_latest = df_country_long[df_country_long["Year"] == selected_year].copy()
 
-# Convert country names to ISO for mapping
-def get_iso(country):
-    try:
-        return pycountry.countries.lookup(country).alpha_3
-    except:
-        return None
-
-df_latest["iso"] = df_latest["Country"].apply(get_iso)
+# --- Choropleth: Global GHG Emissions (fixed for Russia and small countries) ---
+df_latest = df_country_long[df_country_long["Year"] == selected_year].copy()
 
 fig_map = px.choropleth(
     df_latest,
-    locations="iso",
+    locations="Country",
+    locationmode="country names",  # direct name matching (no ISO)
     color="Emissions",
     hover_name="Country",
     color_continuous_scale="YlOrRd",
@@ -211,11 +206,10 @@ fig_map.update_layout(
 )
 
 # Highlight selected country
-selected_iso = get_iso(selected_country)
-if selected_iso:
+if selected_country:
     fig_map.add_scattergeo(
-        locations=[selected_iso],
-        locationmode="ISO-3",
+        locations=[selected_country],
+        locationmode="country names",
         text=[selected_country],
         mode="markers+text",
         marker=dict(size=10, color=highlight_color, line=dict(width=2, color="black")),
