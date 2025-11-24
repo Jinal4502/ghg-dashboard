@@ -71,7 +71,6 @@ Data provided under the conditions described in the “Citation and References�
 ## 👩‍💻 Contributors
 
 Developed by **Jinal Vyas**
-Supervised by **Arizona State University]**
 
 ---
 
