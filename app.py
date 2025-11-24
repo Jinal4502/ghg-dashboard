@@ -317,7 +317,7 @@ st.plotly_chart(fig_bump, use_container_width=True)
 
 # --- LULUCF Carbon Sink / Source Map ---
 country_sum = lulucf_long.groupby(["Country", "Year"])["Emissions"].sum().reset_index()
-latest_year = country_sum["Year"].max()
+latest_year = selected_year
 df_latest = country_sum[country_sum["Year"] == latest_year]
 
 fig_sink = px.choropleth(
