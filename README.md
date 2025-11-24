@@ -1,9 +1,12 @@
-# 🌍 Global Greenhouse Gas (GHG) Impact Dashboard
+# 🌍 Global Greenhouse Gas (GHG) Impact Dashboard 
 
 An interactive **Streamlit dashboard** for visualizing greenhouse gas (GHG) emissions across countries and sectors using the **EDGAR / JRC–IEA 2025 dataset**.  
 The dashboard allows users to explore historical trends, sectoral contributions, and land-use (LULUCF) carbon sinks at both national and global scales.
 
 ---
+
+🔗 **Live Dashboard:** [https://ghg-dashboard-z8pradmrc6wvafdojwqtki.streamlit.app](https://ghg-dashboard-z8pradmrc6wvafdojwqtki.streamlit.app)
+
 
 ## 🚀 Features
 
